@@ -1,10 +1,7 @@
 import java.io.*;
 public class Main {
 	public static int streamFilter(String str, char eq) {
-		return (int) new String(str)
-							.chars()
-							.filter(i -> i == eq)
-							.count();
+		return (int) new String(str).chars().filter(i -> i == eq).count();
 	}
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
