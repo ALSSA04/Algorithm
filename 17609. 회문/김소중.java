@@ -1,17 +1,21 @@
 import java.io.*;
 
 public class Main {
-	public static int isPalindrome(String str) {
-		return isPalindrome(str, str.length(), 0, str.length()-1, true);
+	String str;
+	
+	public int isPalindrome() {
+		int l = str.length();
+		return isPalindrome(l, 0, l-1, true);
 	}
-	public static int isPalindrome(String str, int l, int iIdx, int jIdx, boolean isContinue) {
+	
+	public int isPalindrome(int l, int iIdx, int jIdx, boolean isContinue) {
 		int count = 0;
 		for (int i = iIdx, j = jIdx; i <= l / 2; i++, j--) {
 			if (str.charAt(i) != str.charAt(j)) {
 				count++;
 				if (isContinue) {
-					int front_del = isPalindrome(str, l-1, i+1, j, false);
-					int back_del = isPalindrome(str, l-1, i, j-1, false);
+					int front_del = isPalindrome(l-1, i+1, j, false);
+					int back_del = isPalindrome(l-1, i, j-1, false);
 					count += Math.min(front_del, back_del);
 				}
 				break;
@@ -24,10 +28,11 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
 		int T = Integer.parseInt(br.readLine());
+		Main m = new Main();
 		
 		for (int tast_case = 1; tast_case <= T; tast_case++) {
-			String str = br.readLine();
-			int count = isPalindrome(str);
+			m.str = br.readLine();
+			int count = m.isPalindrome();
 			sb.append(count+"\n");
 		}
 		
