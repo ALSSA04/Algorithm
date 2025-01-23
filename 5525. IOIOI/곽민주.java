@@ -15,10 +15,8 @@ public class boj5525 {
 
 		// 슬라이딩 윈도우 탐색
 		for (int i = 1; i < m - 1; i++) {
-			// "IO" 패턴 확인
+			// "IOI" 패턴 확인
 			if (s.charAt(i - 1) == 'I' && s.charAt(i) == 'O' && s.charAt(i + 1) == 'I') {
-				System.out.println(windowCount + " " + i + " " + s.charAt(i - 1) + s.charAt(i) + s.charAt(i + 1));
-
 				windowCount++;
 				i++; // 다음 문자로 이동
 
@@ -34,5 +32,3 @@ public class boj5525 {
 
 		System.out.println(count);
 	}
-
-}
