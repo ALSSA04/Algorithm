@@ -1,6 +1,11 @@
 import java.io.*;
 
 public class Main {
+	public static int countUp(int N, int count) {
+		int num = count - (2*N +1);
+		if (num < 0) return 0;
+		return num/2 +1;
+	}
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -8,32 +13,22 @@ public class Main {
 		int M = Integer.parseInt(br.readLine());
 		String S = br.readLine();
 		
-		char[] io = {'I', 'O'};
-		int ioIdx = 0;
-		int sum = 0;
-		int count = 1;
-		boolean isIOI = false;
+		char[] io = {'O', 'I'};
+		int ioIdx = 1;
+		int count = 0;
 		
+		int sum = 0;
 		for (int i = 0; i < M; i++) {
 			if (S.charAt(i) == io[ioIdx]) {
+				count++;
 				ioIdx^=1;
-				if (isIOI) count++;
-				isIOI = true;
-			} else {
-				int PnCount =(count - (2*N +1)) / 2;
-				if (count >= 2*N+1) {
-					sum += PnCount+1;
-				}
-				if (isIOI) i--;
-				count = 1;
-				ioIdx = 0;
-				isIOI = false;
+			} else if (count > 0) {
+				sum += countUp(N, count);
+				count = ioIdx^1;
 			}
 		}
-		int PnCount =(count - (2*N +1)) / 2;
-		if (count >= 2*N+1) {
-			sum += PnCount+1;
-		}
+		sum += countUp(N, count);
+		
 		System.out.println(sum);
 	}
 }
