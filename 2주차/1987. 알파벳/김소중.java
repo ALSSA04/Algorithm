@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class Main_1987 {
+public class Main {
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	int[][] dels = {{-1,0},{1,0},{0,-1},{0,1}};
 	boolean[] visited = new boolean[26];
@@ -42,7 +42,7 @@ public class Main_1987 {
 	}
 
 	public static void main(String[] args) throws IOException {
-		Main_1987 m = new Main_1987();
+		Main m = new Main();
 		m.init();
 		System.out.println(m.maxCount);
 	}
