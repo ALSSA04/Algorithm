@@ -36,9 +36,9 @@ public class 김소중 {
 		
 		for (int i = 0; i < W; i++) {
 			int[][] copyArr = arrDeepCopy();	// brickOut()에서 arr을 수정하기 때문에 초기화를 위해 미리 복사
-			brickOut(i);						// 문제에 따라 바뀌는 로직 : 여기에 길게 쓰면 헷갈림 => 메서드로 빼기
-			dfs(depth+1);						// 재귀 호출
-			arr = copyArr;						// 바뀐 값 초기화
+			brickOut(i);				// 문제에 따라 바뀌는 로직 : 여기에 길게 쓰면 헷갈림 => 메서드로 빼기
+			dfs(depth+1);				// 재귀 호출
+			arr = copyArr;				// 바뀐 값 초기화
 		}
 		
 	}
