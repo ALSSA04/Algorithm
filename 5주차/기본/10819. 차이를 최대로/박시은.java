@@ -5,44 +5,67 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
-    private static int N, S;
+    private static int N;
     private static int[] numbers;
 
     private static int answer;
 
     private static final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-    private static StringTokenizer stringTokenizer;
 
     public static void main(String[] args) throws IOException {
         init();
-        find(0, 0, 0);
+        do {
+            answer = Math.max(calculate(), answer);
+        } while (nextPermutation());
+
         System.out.println(answer);
     }
 
     private static void init() throws IOException {
-        stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-        N = Integer.parseInt(stringTokenizer.nextToken());
-        S = Integer.parseInt(stringTokenizer.nextToken());
-
+        N = Integer.parseInt(bufferedReader.readLine());
         numbers = new int[N];
         answer = 0;
-        stringTokenizer = new StringTokenizer(bufferedReader.readLine());
 
+        StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
         for (int i = 0; i < N; i++) {
             numbers[i] = Integer.parseInt(stringTokenizer.nextToken());
         }
+        Arrays.sort(numbers);
     }
 
-    private static void find(int idx, int count, int total) {
-        if (idx == N) {
-            if (total == S && count != 0) {
-                answer++;
-            }
-            return;
+    private static boolean nextPermutation() {
+        int i = N - 1;
+        while (i > 0 && numbers[i - 1] >= numbers[i]) {
+            --i;
         }
 
-        find(idx + 1, count + 1, total + numbers[idx]);
-        find(idx + 1, count, total);
+        if (i <= 0) {
+            return false;
+        }
 
+        int j = N - 1;
+        while (j > 0 && numbers[i - 1] >= numbers[j]) {
+            --j;
+        }
+
+        swap(i - 1, j);
+        Arrays.sort(numbers, i, N);
+        return true;
+    }
+
+    private static void swap(int i, int j) {
+        int temp = numbers[i];
+        numbers[i] = numbers[j];
+        numbers[j] = temp;
+    }
+
+    private static int calculate() {
+        int total = 0;
+
+        for (int i = 1; i < N; i++) {
+            total += Math.abs(numbers[i - 1] - numbers[i]);
+        }
+
+        return total;
     }
 }
