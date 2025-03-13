@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class 김소중 {
+public class 김소중_HashMap {
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
