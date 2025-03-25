@@ -2,7 +2,6 @@ import java.io.*;
 
 public class 김소중 {
 	static int D, P, max;
-	static boolean[] notDefault;
 	
 	public static void main(String[] args) throws IOException {
 		init();
