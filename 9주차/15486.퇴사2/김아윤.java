@@ -19,7 +19,6 @@ public class 김아윤 {
 			dp[nextDay] = Math.max(dp[i-1]+info[i][1], dp[nextDay]);	// i일차의 작업을 했을 때
 		}
 		
-		Arrays.sort(dp);
 		System.out.println(dp[dp.length-1]);
 	}
 	
